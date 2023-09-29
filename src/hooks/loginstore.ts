@@ -8,7 +8,7 @@ type LoginState ={
 export const loginStore = create<LoginState>(
     (set) =>(
         {
-            logged:false,
+            logged:true,
             setLogged: (loggedState: boolean) => set(() => ({logged:loggedState}))
         }
     )
