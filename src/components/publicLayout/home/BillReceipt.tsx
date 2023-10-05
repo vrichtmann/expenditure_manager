@@ -1,3 +1,5 @@
+import { newBillStore } from "../../../hooks/newBillStore";
+
 interface IProps {
   name: string;
   bill: number;
@@ -6,7 +8,11 @@ interface IProps {
 }
 
 export default function BillReceipt({ name, bill, color, bgColor }: IProps) {
-  const EditReceiptPopup = () => {};
+  const { setIsEditMode, setBillStore } = newBillStore();
+  const EditReceiptPopup = () => {
+    setIsEditMode(true);
+    setBillStore(true);
+  };
 
   return (
     <div

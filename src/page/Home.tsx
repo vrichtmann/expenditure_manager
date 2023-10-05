@@ -4,9 +4,14 @@ import AllBills from "../components/publicLayout/home/AllBills";
 import ThemeBillPopup from "../components/publicLayout/home/ThemeBillPopup";
 import { themeStore } from "../hooks/editThemeStore";
 import NewThemePopup from "../components/publicLayout/home/NewThemePopup";
+import { NewTagStore } from "../hooks/newTagStore";
+import { newBillStore } from "../hooks/newBillStore";
+import NewAndEditBillPopup from "../components/publicLayout/home/NewAndEditBillPopup";
 
 export default function Home() {
   const { editThemePopup } = themeStore();
+  const { editNewTagStore } = NewTagStore();
+  const { editBill } = newBillStore();
 
   return (
     <div className="flex w-screen h-screen bg-zinc-800">
@@ -26,7 +31,8 @@ export default function Home() {
           <AllBills />
         </div>
       </div>
-      <NewThemePopup />
+      {editBill && <NewAndEditBillPopup />}
+      {editNewTagStore && <NewThemePopup />}
       {editThemePopup && <ThemeBillPopup />}
     </div>
   );

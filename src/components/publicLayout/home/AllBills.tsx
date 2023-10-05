@@ -1,11 +1,23 @@
 import Billtag from "./BillTag";
+import { FaPlus } from "react-icons/fa";
+import { NewTagStore } from "../../../hooks/newTagStore";
 
 export default function AllBills() {
+  const { setEditNewStore } = NewTagStore();
+
   return (
     <div className="flex h-full w-full">
       <div className="relative h-full w-full bg-white rounded-sm ">
         <div className="relative flex flex-col p-4 h-full">
           <h1 className="font-bold text-center text-4xl mt-2">Bills</h1>
+          <button
+            onClick={() => {
+              setEditNewStore(true);
+            }}
+            className="absolute right-4 top-4 text-right text-xl rounded-full bg-slate-200 p-3 border-2 border-solid border-black"
+          >
+            <FaPlus />
+          </button>
           <div className="relative w-full h-full border-2 border-black mt-4 ">
             <div className="p-4 space-y-6 overflow-y-scroll overflow-hidden h-24 min-h-full">
               <Billtag

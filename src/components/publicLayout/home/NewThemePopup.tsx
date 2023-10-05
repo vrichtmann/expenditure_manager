@@ -1,17 +1,22 @@
 import { MdClose } from "react-icons/md";
 import { useState } from "react";
+import { NewTagStore } from "../../../hooks/newTagStore";
 
 export default function NewThemePopup() {
   const [nameTag, setNameTag] = useState<string>("");
   const [colorTag, setColorTag] = useState<string>("#ffffff");
   const [colorText, setColorText] = useState<string>("#000000");
+  const { setEditNewStore } = NewTagStore();
 
   return (
     <div className="absolute top-0 left-0 w-screen h-screen ">
       <div className="absolute top-0 left-0 w-screen h-screen bg-black opacity-60"></div>
       <div className="relative flex w-screen h-screen">
         <div className="relative bg-white w-2/6 h-auto m-auto rounded-lg p-4 shadow-md">
-          <button className="absolute top-4 right-4 text-black">
+          <button
+            onClick={() => setEditNewStore(false)}
+            className="absolute top-4 right-4 text-black"
+          >
             <MdClose className="text-3xl" />
           </button>
           <div className="text-indigo-600 my-auto border-b-2 border-solid border-x-gray-500 pb-3 ">
@@ -67,16 +72,16 @@ export default function NewThemePopup() {
             </div>
 
             <div
-              className={`flex w-4/5 rounded-md text-white p-2 mt-4 mx-auto h-16 bg-[${colorTag}] text-[${colorText}]`}
+              className={`flex w-4/5 rounded-md text-white p-2 mt-8 mx-auto h-16 bg-zinc-600 text-rgb(239 68 68);`}
             >
               <h1 className=" text-2xl my-auto pl-2">{nameTag}</h1>
             </div>
 
-            <div className="flex justify-between mx-2 mt-14 mb-2">
-              <button className="text-left bg-red-500 border-2 border-solid border-black h-16 w-auto p-4 text-white font-bold rounded-md">
-                Delete theme
-              </button>
-              <button className="text-left bg-indigo-500 border-2 border-solid border-black h-16 w-auto py-4 px-8 text-white font-bold rounded-md">
+            <div className="flex justify-center mx-2 mt-8 mb-2">
+              <button
+                onClick={() => setEditNewStore(false)}
+                className="text-left bg-indigo-500 border-2 border-solid border-black h-16 w-auto py-4 px-8 text-white font-bold rounded-md"
+              >
                 Save
               </button>
             </div>
